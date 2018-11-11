@@ -5302,8 +5302,15 @@ function printJSXElement(path, options, print) {
   const n = path.getValue();
 
   // Turn <div></div> into <div />
-  if (n.type === "JSXElement" && isEmptyJSXElement(n)) {
+  if (
+    n.type === "JSXElement" &&
+    !n.openingElement.selfClosing &&
+    options.closeEmptyJsxElements &&
+    isEmptyJSXElement(n)
+  ) {
     n.openingElement.selfClosing = true;
+  }
+  if (n.openingElement.selfClosing) {
     return path.call(print, "openingElement");
   }
 

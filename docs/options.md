@@ -139,6 +139,46 @@ Valid options:
 | ------- | ------------------------- | ---------------------------- |
 | `false` | `--jsx-bracket-same-line` | `jsxBracketSameLine: <bool>` |
 
+
+## Close Empty JSX Elements
+
+Convert empty JSX elements into self closing elements. For example, turn `<div></div>` into `<div />`.
+
+Many developers use Prettier to format their code whenever a file is saved. Prettier will turn any empty JSX elements into self-closing elements, but this can be annoying if you were planning to add some content. You can disable this behavior by setting this option to `false`. However, you should use the CLI override to set this option to `true` during [a pre-commit hook](./precommit.md). This means that any empty tags will be closed before you commit your changes.
+
+> Please note that this is a one-way operation. Prettier can close an empty tag, but it will never re-open a tag that is already self-closing.
+
+Example Source:
+
+<!-- prettier-ignore -->
+```
+<p />
+<div></div>
+```
+
+Valid options:
+
+- `true` - Example:
+
+<!-- prettier-ignore -->
+```
+<p />
+<div />
+```
+
+- `false` - Example:
+
+<!-- prettier-ignore -->
+```
+<p />
+<div></div>
+```
+
+| Default | CLI Override                 | API Override                    |
+| ------- | ---------------------------- | ------------------------------- |
+| `true`  | `--close-empty-jsx-elements` | `closeEmptyJsxElements: <bool>` |
+
+
 ## Arrow Function Parentheses
 
 _available in v1.9.0+_

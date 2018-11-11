@@ -31,6 +31,13 @@ module.exports = {
     default: false,
     description: "Put > on the last line instead of at a new line."
   },
+  closeEmptyJsxElements: {
+    since: "1.16.0",
+    category: CATEGORY_JAVASCRIPT,
+    type: "boolean",
+    default: true,
+    description: "Close empty JSX elements. (This is a one-way operation.)",
+  },
   semi: {
     since: "1.0.0",
     category: CATEGORY_JAVASCRIPT,
